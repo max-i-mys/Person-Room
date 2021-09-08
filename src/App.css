@@ -1,14 +1,17 @@
 .header-btn-box {
-	margin-left: 30px;
+  margin-left: 30px;
 }
-.header-btn-box > button:nth-of-type(n + 2){
-	margin-left: 10px;
+.header-btn-box > button:nth-of-type(n + 2) {
+  margin-left: 10px;
 }
 .header-container {
-	background: #33363c;
-	border-bottom-right-radius: 8px;
-	border-bottom-left-radius: 8px;
+  background: #33363c;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 .header-menu-box {
-	margin-left: auto;
+  margin-left: auto;
+}
+.header-auth-box > button:nth-of-type(n + 2) {
+  margin-left: 10px;
 }
