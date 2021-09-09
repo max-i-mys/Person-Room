@@ -1,12 +1,15 @@
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Authentication from "./Authentication";
-import {useDispatch} from "react-redux";
-import {visibleModal} from "../../slices/authenticationSlice";
+import { useDispatch } from "react-redux";
+import { visibleModal } from "../../slices/authenticationSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFistRaised } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handlerShow = (e) => {
-    dispatch(visibleModal(e.target.name))
+    dispatch(visibleModal(e.target.name));
   };
   return (
     <>
@@ -19,54 +22,84 @@ export default function Header() {
           sticky="top"
         >
           <Container>
-            <Navbar.Brand href="#">FisherRoom</Navbar.Brand>
+            <Navbar.Brand href="/">
+              <FontAwesomeIcon icon={faFistRaised} /> FisherRoom
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="header-menu-box">
-                <Nav.Link href="#home">Home</Nav.Link>
+                <NavLink to="cabinet" className="nav-link">
+                  Cabinet
+                </NavLink>
                 <NavDropdown title="Features" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#galleries-portfolios">
+                  <NavLink to="galleries-portfolios" className="dropdown-item">
                     Galleries/Portfolios
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#shortcodes">
+                  </NavLink>
+                  <NavLink to="shortcodes" className="dropdown-item">
                     Shortcodes
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#styling">Styling</NavDropdown.Item>
+                  </NavLink>
+                  <NavLink to="styling" className="dropdown-item">
+                    Styling
+                  </NavLink>
                 </NavDropdown>
                 <NavDropdown title="Pages" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#page-with-left-sidebar">
+                  <NavLink
+                    to="page-with-left-sidebar"
+                    className="dropdown-item"
+                  >
                     Page With Left Sidebar
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#page-with-right-sidebar">
+                  </NavLink>
+                  <NavLink
+                    to="page-with-right-sidebar"
+                    className="dropdown-item"
+                  >
                     Page With Right Sidebar
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#page-with-two-sidebars">
+                  </NavLink>
+                  <NavLink
+                    to="page-with-two-sidebars"
+                    className="dropdown-item"
+                  >
                     Page With Two Sidebars
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#full-width-page">
+                  </NavLink>
+                  <NavLink to="full-width-page" className="dropdown-item">
                     Fullwidth Page
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#404-error-page">
+                  </NavLink>
+                  <NavLink to="404-error-page" className="dropdown-item">
                     404 Error Page
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#attachment-page">
+                  </NavLink>
+                  <NavLink to="attachment-page" className="dropdown-item">
                     Attachment Page
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#password-protected-page">
+                  </NavLink>
+                  <NavLink
+                    to="password-protected-page"
+                    className="dropdown-item"
+                  >
                     Password Protected Page
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#blank-page">
+                  </NavLink>
+                  <NavLink to="blank-page" className="dropdown-item">
                     Blank Page
-                  </NavDropdown.Item>
+                  </NavLink>
                 </NavDropdown>
                 <NavDropdown title="BuddyPress" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#activity">Activity</NavDropdown.Item>
-                  <NavDropdown.Item href="#members">Members</NavDropdown.Item>
-                  <NavDropdown.Item href="#groups">Groups</NavDropdown.Item>
-                  <NavDropdown.Item href="#forums">Forums</NavDropdown.Item>
+                  <NavLink to="activity" className="dropdown-item">
+                    Activity
+                  </NavLink>
+                  <NavLink to="members" className="dropdown-item">
+                    Members
+                  </NavLink>
+                  <NavLink to="groups" className="dropdown-item">
+                    Groups
+                  </NavLink>
+                  <NavLink to="forums" className="dropdown-item">
+                    Forums
+                  </NavLink>
                 </NavDropdown>
-                <Nav.Link href="#blog">Blog</Nav.Link>
-                <Nav.Link href="#cont">Contact</Nav.Link>
+                <NavLink to="blog" className="nav-link">
+                  Blog
+                </NavLink>
+                <NavLink to="cont" className="nav-link">
+                  Contact
+                </NavLink>
               </Nav>
               <Nav className="header-btn-box">
                 <Button

@@ -15,21 +15,21 @@ export const authSlice = createSlice({
         case "signIn":
           state.showLogIn = true;
           state.showLogUp = false;
-          state.showLostPassword = false
+          state.showLostPassword = false;
           break;
         case "signUp":
           state.showLogUp = true;
           state.showLogIn = false;
-          state.showLostPassword = false
+          state.showLostPassword = false;
           break;
         case "lostPassword":
-          state.showLostPassword = true
+          state.showLostPassword = true;
           break;
         default:
           break;
       }
     },
-    hiddenModal: state => {
+    hiddenModal: (state) => {
       state.showModal = false;
     },
   },

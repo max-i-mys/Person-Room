@@ -1,6 +1,12 @@
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { hiddenModal, visibleModal } from "../../slices/authenticationSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSignInAlt,
+  faQuestionCircle,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Authentication() {
   const { showModal, showLogIn, showLogUp, showLostPassword } = useSelector(
@@ -17,9 +23,25 @@ export default function Authentication() {
       >
         <Modal.Header closeButton>
           {showLogIn && !showLostPassword && <Modal.Title>Sign In</Modal.Title>}
-          {showLogUp && <Modal.Title>Create an Account</Modal.Title>}
+          {showLogUp && (
+            <>
+              <Modal.Title>Create an Account</Modal.Title>
+            </>
+          )}
           {showLostPassword && <Modal.Title>Lost Password</Modal.Title>}
         </Modal.Header>
+        {showLogUp && (
+          <span className="pe-3 ps-3 pt-1 small text-secondary">
+            Registering for this site is easy. Just fill in the fields below,
+            and we'll get a new account set up for you in no time.
+          </span>
+        )}
+        {showLostPassword && (
+          <span className="pe-3 ps-3 pt-1 small text-secondary">
+            Please enter your username or email address. You will receive a link
+            to create a new password via email.
+          </span>
+        )}
         <Modal.Body className="pb-0">
           <Form>
             {showLogUp && (
@@ -83,18 +105,21 @@ export default function Authentication() {
                     Reset Password
                   </Button>
                 )}
-                {!showLostPassword && (
-                  <Button type="reset">Reset</Button>
-                )}
+                {!showLostPassword && <Button type="reset">Reset</Button>}
               </Col>
               <div className="d-flex flex-column align-items-center mt-3">
                 <button
                   onClick={() =>
                     dispatch(visibleModal(showLogIn ? "signUp" : "signIn"))
                   }
-                  className="p-0 border-0 bg-white small text-primary"
+                  className="small text-primary header-auth-btn"
                   type="button"
                 >
+                  {showLogIn ? (
+                    <FontAwesomeIcon icon={faUserPlus} />
+                  ) : (
+                    <FontAwesomeIcon icon={faSignInAlt} />
+                  )}
                   {showLogIn ? "Sign Up" : "Sign In"}
                 </button>
                 {showLogIn && !showLostPassword && (
@@ -102,8 +127,9 @@ export default function Authentication() {
                     name="lostPassword"
                     onClick={(e) => dispatch(visibleModal(e.target.name))}
                     type="button"
-                    className="p-0 border-0 bg-white small text-primary"
+                    className="small text-primary header-auth-btn"
                   >
+                    <FontAwesomeIcon icon={faQuestionCircle} />
                     Lost Password
                   </button>
                 )}
