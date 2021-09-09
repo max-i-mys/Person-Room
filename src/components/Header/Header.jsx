@@ -19,7 +19,7 @@ export default function Header() {
           sticky="top"
         >
           <Container>
-            <Navbar.Brand href="#">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="#">FisherRoom</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="header-menu-box">
